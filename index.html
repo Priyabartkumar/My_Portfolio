@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
   <!-- Navigation -->
@@ -82,8 +82,8 @@
           <p class="about__bio">
             I'm Priyabart Kumar, a Computer Science engineer who lives at
             the intersection of AI research and shipping real product. I
-            prototype with Python, ship with React &amp; FastAPI, and obsess
-            over latency, correctness and craft.
+            prototype in Python and TypeScript, ship with React, Node.js and
+            FastAPI, and obsess over latency, correctness and craft.
           </p>
           <p class="about__bio">
             When I'm not writing code, I'm breaking it apart to understand why it
@@ -163,9 +163,51 @@
         <a href="https://priyabartkr-olive-ai-assist.hf.space" target="_blank" rel="noopener" class="project__live">VIEW LIVE <span class="arrow">&#8599;</span></a>
       </div>
 
+      <!-- Project 2 -->
+      <div class="project project--featured">
+        <span class="project__num">/ 02</span>
+        <div class="project__image">
+          <div class="project__image-placeholder project__image--4">
+            <video
+              class="project__video"
+              src="assets/sealed-league.mp4"
+              poster="assets/sealed-league.jpg"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              aria-label="Sealed League design concept — commit, reveal and Merkle proof settlement flow"
+            ></video>
+            <div class="video-ctl is-muted" id="sealedLeagueCtl">
+              <button type="button" class="video-ctl__btn" aria-label="Unmute video" aria-pressed="false">
+                <svg class="video-ctl__icon video-ctl__icon--off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                <svg class="video-ctl__icon video-ctl__icon--on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </button>
+              <input type="range" class="video-ctl__vol" min="0" max="100" step="1" value="70" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+        <h3 class="project__title">Sealed League</h3>
+        <p class="project__desc">
+          Four autonomous LLM agents compete each round to forecast match
+          outcomes, committing every pick on-chain before kickoff via
+          commit&ndash;reveal. Settlement runs on Merkle proofs &mdash; no human
+          judge, no trusted oracle &mdash; so each agent builds a tamper-proof
+          accuracy record anyone can re-verify in-browser.
+        </p>
+        <div class="project__tags">
+          <span class="tag">SOLANA</span>
+          <span class="tag">ANCHOR</span>
+          <span class="tag">CLAUDE API</span>
+          <span class="tag">AI AGENTS</span>
+        </div>
+        <a href="https://txlinetradingtoolagent-production.up.railway.app/" target="_blank" rel="noopener" class="project__live">VIEW LIVE <span class="arrow">&#8599;</span></a>
+      </div>
+
       <!-- Projects Grid -->
       <div class="projects-grid">
-        <!-- Project 2 -->
+        <!-- Project 3 -->
         <div class="project">
           <div class="project__image">
             <div class="project__image-placeholder project__image--2">
@@ -195,7 +237,7 @@
           </div>
         </div>
 
-        <!-- Project 3 -->
+        <!-- Project 4 -->
         <div class="project">
           <div class="project__image">
             <div class="project__image-placeholder project__image--3">
@@ -397,6 +439,6 @@
     <span>// END_OF_LINE</span>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

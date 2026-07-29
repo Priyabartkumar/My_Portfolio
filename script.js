@@ -72,6 +72,56 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScroll = current;
   }, { passive: true });
 
+  // Sealed League video — sound toggle + volume
+  const videoCtl = document.getElementById('sealedLeagueCtl');
+  if (videoCtl) {
+    const video = videoCtl.parentElement.querySelector('.project__video');
+    const soundBtn = videoCtl.querySelector('.video-ctl__btn');
+    const volume = videoCtl.querySelector('.video-ctl__vol');
+
+    // Starts muted so autoplay is allowed; slider holds the level to restore
+    video.volume = volume.value / 100;
+
+    const syncSound = () => {
+      const muted = video.muted || video.volume === 0;
+      videoCtl.classList.toggle('is-muted', muted);
+      soundBtn.setAttribute('aria-pressed', String(!muted));
+      soundBtn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
+    };
+
+    soundBtn.addEventListener('click', () => {
+      const unmuting = video.muted;
+
+      if (unmuting) {
+        // The `muted` content attribute wins on some engines — clear it too
+        video.removeAttribute('muted');
+        video.muted = false;
+        // Unmuting at zero volume would be silent — give it an audible level
+        if (video.volume === 0) {
+          video.volume = 0.7;
+          volume.value = 70;
+        }
+        // Chrome pauses an autoplaying video the moment it becomes audible
+        const resume = video.play();
+        if (resume) resume.catch(() => {});
+      } else {
+        video.muted = true;
+      }
+
+      syncSound();
+      console.log('[sealed-league] muted=%s volume=%s paused=%s', video.muted, video.volume, video.paused);
+    });
+
+    volume.addEventListener('input', () => {
+      video.volume = volume.value / 100;
+      video.muted = video.volume === 0;
+      syncSound();
+    });
+
+    video.addEventListener('volumechange', syncSound);
+    syncSound();
+  }
+
   // Typing effect for hero greeting
   const greeting = document.querySelector('.hero__greeting');
   if (greeting) {
